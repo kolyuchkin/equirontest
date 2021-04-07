@@ -1,6 +1,6 @@
-package com.kavhome.equirontest.controller;
+package com.kavhome.equirontest.restservice.controller;
 
-import com.kavhome.equirontest.pojo.DocPojo;
+import com.kavhome.equirontest.restservice.pojo.DocPojo;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

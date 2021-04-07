@@ -1,4 +1,4 @@
-package com.kavhome.equirontest.error;
+package com.kavhome.equirontest.restservice.error;
 
 import java.util.ArrayList;
 import java.util.List;

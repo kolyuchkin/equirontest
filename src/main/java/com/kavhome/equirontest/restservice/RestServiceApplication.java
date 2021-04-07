@@ -1,13 +1,13 @@
-package com.kavhome.equirontest;
+package com.kavhome.equirontest.restservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class EquirontestApplication {
+public class RestServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EquirontestApplication.class, args);
+		SpringApplication.run(RestServiceApplication.class, args);
 	}
 
 }

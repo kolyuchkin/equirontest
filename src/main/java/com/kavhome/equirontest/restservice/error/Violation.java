@@ -1,4 +1,4 @@
-package com.kavhome.equirontest.error;
+package com.kavhome.equirontest.restservice.error;
 
 /**
  * @author <a href="mailto:koljuchkin.aleksandr@alphaopen.com" >Aleksandr Kolyuchkin</a>

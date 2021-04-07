@@ -1,4 +1,4 @@
-package com.kavhome.equirontest.pojo;
+package com.kavhome.equirontest.restservice.pojo;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;

@@ -1,9 +1,9 @@
-package com.kavhome.equirontest;
+package com.kavhome.equirontest.restservice;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.kavhome.equirontest.controller.DocumentValidationController;
-import com.kavhome.equirontest.pojo.DocPojo;
-import com.kavhome.equirontest.pojo.ProductPojo;
+import com.kavhome.equirontest.restservice.controller.DocumentValidationController;
+import com.kavhome.equirontest.restservice.pojo.DocPojo;
+import com.kavhome.equirontest.restservice.pojo.ProductPojo;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

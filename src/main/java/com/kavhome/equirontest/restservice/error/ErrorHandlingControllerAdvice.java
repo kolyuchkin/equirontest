@@ -1,4 +1,4 @@
-package com.kavhome.equirontest.error;
+package com.kavhome.equirontest.restservice.error;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
