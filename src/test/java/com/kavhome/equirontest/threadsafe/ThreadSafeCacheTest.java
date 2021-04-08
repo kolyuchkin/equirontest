@@ -6,6 +6,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -38,5 +39,46 @@ class ThreadSafeCacheTest {
 
         assertEquals("1", cache.compute(1, function).get(100, TimeUnit.MILLISECONDS));
         assertFalse(computed.get());
+    }
+
+    @Test
+    void computeTestWithThreads() throws InterruptedException {
+        final ThreadSafeCache<Integer, String> cache = ThreadSafeCache.of();
+        AtomicInteger computed = new AtomicInteger(0);
+        Function<Integer, String> function = integer -> {
+            computed.incrementAndGet();
+            return integer.toString();
+        };
+
+        Runnable runnable1 = () -> {
+            for (int i = 0; i < 1000; i++) {
+                try {
+                    final String s = cache.compute(i, function).get(100, TimeUnit.MILLISECONDS);
+                } catch (InterruptedException | ExecutionException | TimeoutException e) {
+                    throw new IllegalStateException("Incorrect algorithm");
+                }
+            }
+        };
+
+        Runnable runnable2 = () -> {
+            for (int i = 999; i > 0; i--) {
+                try {
+                    final String s = cache.compute(i, function).get(100, TimeUnit.MILLISECONDS);
+                } catch (InterruptedException | ExecutionException | TimeoutException e) {
+                    throw new IllegalStateException("Incorrect algorithm");
+                }
+            }
+        };
+
+        final Thread thread1 = new Thread(runnable1);
+        final Thread thread2 = new Thread(runnable2);
+
+        thread1.start();
+        thread2.start();
+
+        thread1.join(10000);
+        thread2.join(10000);
+
+        assertEquals(1000, computed.get());
     }
 }
